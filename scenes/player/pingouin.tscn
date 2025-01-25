@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2metrrlwxpmi"]
+
+[ext_resource type="Script" path="res://scenes/player/pingouin.gd" id="1_3md2u"]
+[ext_resource type="Texture2D" uid="uid://dwlbgfnud66ss" path="res://assets/Pingouin.png" id="2_asqmj"]
+[ext_resource type="Texture2D" uid="uid://dnhi7afts3384" path="res://assets/viseur.png" id="3_86v3k"]
+[ext_resource type="Texture2D" uid="uid://cv3jtk8pemn6v" path="res://assets/Pingouin_saute.png" id="3_5204e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_042tq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_asqmj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5204e")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ept2f"]
+radius = 16.0
+height = 96.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmca0"]
+radius = 16.0
+
+[node name="Pingouin" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3md2u")
+speed = 250
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_042tq")
+offset = Vector2(0, -266.667)
+
+[node name="body" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ept2f")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(104, 0)
+
+[node name="Viseur" type="Sprite2D" parent="Marker2D"]
+top_level = true
+texture = ExtResource("3_86v3k")
+offset = Vector2(0, -16)
+
+[node name="Area2D" type="Area2D" parent="Marker2D/Viseur"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Viseur/Area2D"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_wmca0")
+
+[node name="ProgressBar" type="ProgressBar" parent="Marker2D/Viseur"]
+offset_left = -32.0
+offset_top = -80.0
+offset_right = 32.0
+offset_bottom = -53.0
+
+[connection signal="area_entered" from="Marker2D/Viseur/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Marker2D/Viseur/Area2D" to="." method="_on_area_2d_area_exited"]

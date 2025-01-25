@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjqt300su8ftc"]
+
+[ext_resource type="Texture2D" uid="uid://bckdtfjnrj1ea" path="res://assets/decors/background.jpeg" id="1_fhgcc"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_wluhd"]
+[ext_resource type="PackedScene" uid="uid://c2metrrlwxpmi" path="res://scenes/player/pingouin.tscn" id="2_sdqw1"]
+[ext_resource type="Texture2D" uid="uid://dn8awr1n7m0mu" path="res://assets/decors/sol_tile.png" id="2_xlrkn"]
+[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="4_x01hk"]
+[ext_resource type="PackedScene" uid="uid://hbho8jahm6wb" path="res://scenes/semi.tscn" id="6_wbb7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb21f"]
+size = Vector2(3560, 82)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_wluhd")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="Background" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(1528, 456)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_fhgcc")
+offset = Vector2(-50.0001, 0)
+
+[node name="sol" type="Parallax2D" parent="."]
+
+[node name="SolTile" type="Sprite2D" parent="sol"]
+position = Vector2(-192, 600)
+scale = Vector2(4.4114, 1.44906)
+texture = ExtResource("2_xlrkn")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="sol"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sol/StaticBody2D"]
+position = Vector2(1588, 744)
+shape = SubResource("RectangleShape2D_vb21f")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("object1", "object2")]
+position = Vector2(1512, 944)
+offset = Vector2(0, -200)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.01
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("4_x01hk")
+object1 = NodePath("../playzone/Pingouin")
+object2 = NodePath("../playzone/Pingouin2")
+
+[node name="playzone" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Pingouin" parent="playzone" instance=ExtResource("2_sdqw1")]
+position = Vector2(1100, 966)
+player = "P1"
+semi_scene = ExtResource("6_wbb7u")
+interact_speed = 100
+
+[node name="Pingouin2" parent="playzone" instance=ExtResource("2_sdqw1")]
+position = Vector2(1632, 1024)
+player = "P2"
+
+[connection signal="semi_to_spawn" from="playzone/Pingouin" to="." method="_on_semi_instanciated"]
+[connection signal="semi_to_spawn" from="playzone/Pingouin2" to="." method="_on_semi_instanciated"]
