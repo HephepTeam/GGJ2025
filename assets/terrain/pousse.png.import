@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d33yxb0787r2q"
-path="res://.godot/imported/pousse.png-e4d30430eb08e32b2d6aba1b9420d3a9.ctex"
+path="res://.godot/imported/Pousse.png-2649cbfce2c94070d9f3ae7f3e9cf57b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/terrain/pousse.png"
-dest_files=["res://.godot/imported/pousse.png-e4d30430eb08e32b2d6aba1b9420d3a9.ctex"]
+source_file="res://assets/terrain/Pousse.png"
+dest_files=["res://.godot/imported/Pousse.png-2649cbfce2c94070d9f3ae7f3e9cf57b.ctex"]
 
 [params]
 

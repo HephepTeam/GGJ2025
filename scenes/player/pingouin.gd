@@ -11,11 +11,11 @@ signal semi_to_spawn(semi)
 @export_category("Animation")
 @export var scale_speed = 10
 @export_category("instanciable")
-@export var possible_semi : Array[PackedScene]
 @export var semi_scene : PackedScene
+@export var crafted_scene : PackedScene
 @export_category("")
 var tool_idx = 0
-enum tools {RIEN=0, ARROSOIR, GRAINE, DECO }
+enum tools {RIEN=0, ARROSOIR, DECO }
 var interact_pressed = false
 @export var interact_speed = 30
 
@@ -70,10 +70,12 @@ func _physics_process(delta: float) -> void:
 		$Visual.flip_h = true
 		$Visual/tools.scale.x = -3.33
 		$Visual/Aile.scale.x = -1.0
+		$Visual/NootVisual.scale.x = -1.0
 	elif h_move <0:
 		$Visual.flip_h = false
 		$Visual/tools.scale.x = 3.33
 		$Visual/Aile.scale.x = 1.0
+		$Visual/NootVisual.scale.x = 1.0
 		
 	$Visual.scale = $Visual.scale.lerp(init_visual_scale, delta * scale_speed)
 
@@ -90,6 +92,13 @@ func _process(delta):
 	else:
 		switch_just_pressed = false
 	
+	if Input.is_action_just_pressed(str(player)+"_noot"):
+		$Visual/NootVisual.visible = true
+		$noot.play()
+		await $noot.finished
+		$Visual/NootVisual.visible = true
+		
+		
 	if Input.is_action_just_pressed(str(player)+"_interact"):
 		if !interact_pressed :
 			if game.check_available_pos($Marker2D/Viseur.global_position):
@@ -103,7 +112,7 @@ func _process(delta):
 	
 	if interact_pressed:
 		match tool_idx:
-			tools.GRAINE:
+			tools.RIEN:
 				$Marker2D/Viseur/ProgressBar.visible = true
 				$Marker2D/Viseur/ProgressBar.value += delta * interact_speed
 				if $Marker2D/Viseur/ProgressBar.value>=100:
@@ -120,9 +129,9 @@ func _process(delta):
 			tools.ARROSOIR:
 				if semi_in_range:
 					semi_in_range.interact(true)
-			tools.RIEN:
-				if semi_in_range:
-					semi_in_range.interact(false) 
+			#tools.RIEN:
+				#if semi_in_range:
+					#semi_in_range.interact(false) 
 	else:
 		$Marker2D/Viseur/ProgressBar.visible = false
 		$Marker2D/Viseur/ProgressBar.value = 0
@@ -142,7 +151,7 @@ func hop():
 		hoping = false
 		
 func bounce():
-	$Visual.scale.x =  init_visual_scale.x *1.2
+	$Visual.scale.x =  init_visual_scale.x *1.3
 	$Visual.scale.y =  init_visual_scale.y *0.8
 	#if bounce_tween:
 		#bounce_tween.kill()
@@ -165,6 +174,12 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 		semi_in_range = null
 
 func enable_graine_UI(val):
+	$SelectUI.player = player
+	$SelectUI.enabled = val
+	$SelectUI.visible = val
+	
+func enable_Etabli_UI(val):
+	$SelectUI.player = player
 	$SelectUI.enabled = val
 	$SelectUI.visible = val
 	
@@ -178,6 +193,8 @@ func switch_tool(idx):
 			tools[i].visible = false
 			
 
-		
+func _on_select_ui_object_chosed(obj: Variant) -> void:
+	semi_scene = obj
 	
+func _on_etabli_ui_object_chosed(obj: Variant) -> void:
 	

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuy0gtevrnml7"]
+
+[ext_resource type="Script" path="res://scenes/etabli.gd" id="1_5mm4p"]
+[ext_resource type="Texture2D" uid="uid://dbin5jmqe0g1g" path="res://assets/Boiite placeholder .png" id="1_fx1nm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvmfx"]
+size = Vector2(160, 40)
+
+[node name="etabli" type="Area2D"]
+script = ExtResource("1_5mm4p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 44)
+shape = SubResource("RectangleShape2D_kvmfx")
+
+[node name="BoiitePlaceholder" type="Sprite2D" parent="."]
+position = Vector2(0, 32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fx1nm")
+offset = Vector2(16, -192)

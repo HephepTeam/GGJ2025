@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://daa2dw2kc7uy"]
+
+[ext_resource type="Texture2D" uid="uid://b3h6lpryjtjs7" path="res://assets/tools/wood.png" id="1_kbln2"]
+[ext_resource type="Script" path="res://scenes/wood.gd" id="2_c8fm0"]
+
+[node name="wood" type="Sprite2D"]
+texture = ExtResource("1_kbln2")
+script = ExtResource("2_c8fm0")

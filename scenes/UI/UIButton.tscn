@@ -16,19 +16,19 @@ shader_parameter/pixel_size = 4
 [node name="Ybutton" type="TextureRect"]
 material = SubResource("ShaderMaterial_4qj4a")
 custom_minimum_size = Vector2(32, 32)
-offset_left = -16.0
+offset_left = -24.0
 offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 24.0
+offset_bottom = 32.0
 texture = ExtResource("2_m3i7a")
-expand_mode = 4
+expand_mode = 1
 script = ExtResource("3_cwloh")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -32.0
+offset_left = -24.0
 offset_top = -24.0
-offset_right = 64.0
+offset_right = 72.0
 offset_bottom = 8.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10

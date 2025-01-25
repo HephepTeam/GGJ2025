@@ -17,8 +17,8 @@ func _process(delta: float) -> void:
 			$Y.outline(false)
 			$B.outline(false)
 			await get_tree().create_timer(0.2).timeout
-			enabled = false
-			visible = false
+			#enabled = false
+			#visible = false
 			object_chosed.emit(Possible_object[object_idx])
 		elif Input.is_action_just_pressed(str(player)+"_Y"):
 			var object_idx = 1
@@ -26,8 +26,8 @@ func _process(delta: float) -> void:
 			$Y.outline(true)
 			$B.outline(false)
 			await get_tree().create_timer(0.2).timeout
-			enabled = false
-			visible = false
+			#enabled = false
+			#visible = false
 			object_chosed.emit(Possible_object[object_idx])
 		elif Input.is_action_just_pressed(str(player)+"_B"):
 			var object_idx = 2
@@ -35,6 +35,6 @@ func _process(delta: float) -> void:
 			$Y.outline(false)
 			$B.outline(true)
 			await get_tree().create_timer(0.2).timeout
-			enabled = false
-			visible = false
+			#enabled = false
+			#visible = false
 			object_chosed.emit(Possible_object[object_idx])

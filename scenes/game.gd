@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var etabli = null
+
 func _ready():
 	for ping in $playzone.get_children():
 		if ping is Pingouin:
@@ -7,6 +9,8 @@ func _ready():
 
 
 func _on_semi_instanciated(semi: Node2D):
+	if semi.is_in_group("wood"):
+		semi.wood_target = etabli.global_position
 	$playzone.add_child(semi)
 	semi.grow_finished.connect(_grow_finished)
 	

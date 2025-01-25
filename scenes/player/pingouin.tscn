@@ -1,15 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2metrrlwxpmi"]
+[gd_scene load_steps=22 format=3 uid="uid://c2metrrlwxpmi"]
 
 [ext_resource type="Script" path="res://scenes/player/pingouin.gd" id="1_3md2u"]
 [ext_resource type="Texture2D" uid="uid://dwlbgfnud66ss" path="res://assets/Pingouin.png" id="2_asqmj"]
-[ext_resource type="PackedScene" uid="uid://cnqxqsegjljbv" path="res://scenes/semi/semi_tree.tscn" id="2_erdur"]
 [ext_resource type="Texture2D" uid="uid://dnhi7afts3384" path="res://assets/viseur.png" id="3_86v3k"]
 [ext_resource type="Texture2D" uid="uid://cv3jtk8pemn6v" path="res://assets/Pingouin_saute.png" id="3_5204e"]
-[ext_resource type="PackedScene" uid="uid://opjsuyerfgq1" path="res://scenes/semi/semi_flower.tscn" id="3_grgvp"]
 [ext_resource type="Texture2D" uid="uid://bklsmd1rui3ky" path="res://assets/tools/arrosoir.png" id="5_4ycuf"]
-[ext_resource type="Texture2D" uid="uid://divh6lk54dgol" path="res://assets/tools/pelle.png" id="5_aoln1"]
+[ext_resource type="Texture2D" uid="uid://dajssdfj74dcd" path="res://assets/tools/marto.png" id="5_j2626"]
 [ext_resource type="Texture2D" uid="uid://qaohrnogcsdo" path="res://assets/tools/aile.png" id="6_2s6uv"]
+[ext_resource type="Texture2D" uid="uid://csl4gp1c5er5w" path="res://assets/noot_visual.png" id="7_wkm7d"]
+[ext_resource type="AudioStream" uid="uid://cy8uewslspj7g" path="res://assets/sfx/noot1.ogg" id="10_cdsbf"]
 [ext_resource type="PackedScene" uid="uid://5njy6j5fnmrh" path="res://scenes/UI/graine_ui.tscn" id="10_rduio"]
+[ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="11_mnxnq"]
+[ext_resource type="AudioStream" uid="uid://dkrc5y6dkxwe" path="res://assets/sfx/noot2.ogg" id="11_tg33q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_042tq"]
 animations = [{
@@ -48,11 +50,47 @@ fill_to = Vector2(0.75, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_wmca0"]
 radius = 16.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ul2bg"]
+resource_local_to_scene = true
+shader = ExtResource("11_mnxnq")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 16.0
+shader_parameter/outline_color = Color(0.710464, 0.710464, 0.710464, 1)
+shader_parameter/pixel_size = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pj585"]
+resource_local_to_scene = true
+shader = ExtResource("11_mnxnq")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 16.0
+shader_parameter/outline_color = Color(0.710464, 0.710464, 0.710464, 1)
+shader_parameter/pixel_size = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hjxf"]
+resource_local_to_scene = true
+shader = ExtResource("11_mnxnq")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 16.0
+shader_parameter/outline_color = Color(0.710464, 0.710464, 0.710464, 1)
+shader_parameter/pixel_size = 4
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x7umq"]
+random_pitch = 1.5
+streams_count = 2
+stream_0/stream = ExtResource("10_cdsbf")
+stream_1/stream = ExtResource("11_tg33q")
+
 [node name="Pingouin" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_3md2u")
+player = null
 speed = 250
-possible_semi = Array[PackedScene]([ExtResource("2_erdur"), ExtResource("3_grgvp"), ExtResource("2_erdur")])
+hop_heigth = null
+scale_speed = null
+interact_speed = null
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -61,33 +99,35 @@ offset = Vector2(0, -266.667)
 
 [node name="tools" type="Node2D" parent="Visual"]
 position = Vector2(0, -160)
-scale = Vector2(3.33333, 3.33333)
+scale = Vector2(3.33, 3.33)
 
 [node name="Rien" type="Sprite2D" parent="Visual/tools"]
 
 [node name="Arrosoir" type="Sprite2D" parent="Visual/tools"]
 visible = false
 position = Vector2(-4.76837e-07, 0)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_4ycuf")
-offset = Vector2(40, 40)
-
-[node name="graine" type="Sprite2D" parent="Visual/tools"]
-visible = false
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("5_aoln1")
 offset = Vector2(40, 40)
 
 [node name="deco" type="Sprite2D" parent="Visual/tools"]
 visible = false
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("5_aoln1")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_j2626")
 offset = Vector2(40, 40)
 
 [node name="Aile" type="Sprite2D" parent="Visual"]
 position = Vector2(0, -160)
 texture = ExtResource("6_2s6uv")
 offset = Vector2(80, 0)
+
+[node name="NootVisual" type="Sprite2D" parent="Visual"]
+visible = false
+position = Vector2(1.52588e-05, -426.667)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("7_wkm7d")
+offset = Vector2(-177.778, 22.2222)
+flip_h = true
 
 [node name="body" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -129,5 +169,42 @@ offset_bottom = -53.0
 visible = false
 offset_right = 56.0
 
+[node name="X" parent="SelectUI" index="0"]
+material = SubResource("ShaderMaterial_ul2bg")
+
+[node name="Y" parent="SelectUI" index="1"]
+material = SubResource("ShaderMaterial_pj585")
+offset_left = 0.0
+offset_right = 48.0
+
+[node name="B" parent="SelectUI" index="2"]
+material = SubResource("ShaderMaterial_6hjxf")
+
+[node name="EtabliUI" parent="." instance=ExtResource("10_rduio")]
+visible = false
+offset_right = 56.0
+
+[node name="X" parent="EtabliUI" index="0"]
+material = SubResource("ShaderMaterial_ul2bg")
+text = "Déco"
+
+[node name="Y" parent="EtabliUI" index="1"]
+material = SubResource("ShaderMaterial_pj585")
+offset_left = 0.0
+offset_right = 48.0
+text = "Parasol"
+
+[node name="B" parent="EtabliUI" index="2"]
+material = SubResource("ShaderMaterial_6hjxf")
+text = "Transat"
+
+[node name="noot" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_x7umq")
+
 [connection signal="area_entered" from="Marker2D/Viseur/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Marker2D/Viseur/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="object_chosed" from="SelectUI" to="." method="_on_select_ui_object_chosed"]
+[connection signal="object_chosed" from="EtabliUI" to="." method="_on_select_ui_object_chosed"]
+
+[editable path="SelectUI"]
+[editable path="EtabliUI"]

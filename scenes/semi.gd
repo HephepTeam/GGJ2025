@@ -2,11 +2,12 @@ extends Area2D
 class_name Semi
 
 signal grow_finished(pow)
-@onready var grow_power := 0.03
+@export var grow_power := 0.03
 @onready var state_steps  = $visual.sprite_frames.get_animation_names().size()
 @export var y_offset = -112
 var state_idx = 0
 var time = 0.0
+var wood_target = Vector2(0,0)
 
 @export var evolve_time = 2.0
 
@@ -35,10 +36,10 @@ func _process(delta):
 		if time >=evolve_time:
 			time = 0.0
 			evolve()
-	if state_idx > 1:
-		$visual.offset.y = y_offset
-	else:
-		$visual.offset.y = -32
+	#if state_idx > 1:
+		#$visual.offset.y = y_offset
+	#else:
+		#$visual.offset.y = -32
 			
 func interact(water: bool = false):
 	if water:
@@ -54,4 +55,8 @@ func destroy():
 	queue_free() #todo animate and return wood
 	
 func harvest():
+	for i in range(randi_range(2,4)):
+		var inst = load("res://scenes/wood.tscn").instanciate()
+		inst.target = wood_target
+		add_sibling(inst)
 	destroy()

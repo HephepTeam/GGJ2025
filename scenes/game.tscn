@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scenes/camera_2d.gd" id="4_x01hk"]
 [ext_resource type="PackedScene" uid="uid://cnqxqsegjljbv" path="res://scenes/semi/semi_tree.tscn" id="6_uygr6"]
 [ext_resource type="Shader" path="res://scenes/sway.gdshader" id="7_bgukk"]
-[ext_resource type="Texture2D" uid="uid://csmvvewv8tquh" path="res://assets/bubble.png" id="7_vup1b"]
+[ext_resource type="Texture2D" uid="uid://cscocjwq6tm75" path="res://assets/decors/Bulle.png" id="8_2ri3n"]
 [ext_resource type="Script" path="res://scenes/bubble.gd" id="9_w1ad1"]
 [ext_resource type="Texture2D" uid="uid://bw4srmjtgtqns" path="res://assets/UI/exit_button_idle.png" id="10_r0n0n"]
 [ext_resource type="Texture2D" uid="uid://bttrd1fiy3vr0" path="res://assets/UI/exit_button_clicked.png" id="11_w0lwb"]
@@ -31,68 +31,68 @@ shader_parameter/offset = 0.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bq2te"]
 resource_local_to_scene = true
-a = Vector2(455, 66)
-b = Vector2(-70, 54)
+a = Vector2(742.5, 812.667)
+b = Vector2(-482.5, 792.667)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_emc0p"]
 resource_local_to_scene = true
-a = Vector2(455, 66)
-b = Vector2(917.5, 2)
+a = Vector2(752.5, 809.333)
+b = Vector2(1897.5, 709.333)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vpm78"]
 resource_local_to_scene = true
-a = Vector2(1085, -70)
-b = Vector2(917.5, 2)
+a = Vector2(2322.5, 589.333)
+b = Vector2(1902.5, 706)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2f1q2"]
 resource_local_to_scene = true
-a = Vector2(1085, -70)
-b = Vector2(1152.5, -198)
+a = Vector2(2317.5, 586)
+b = Vector2(2072.5, 432.667)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_r3mli"]
 resource_local_to_scene = true
-a = Vector2(1092.5, -334)
-b = Vector2(1152.5, -198)
+a = Vector2(1487.5, 242.667)
+b = Vector2(2032.5, 412.667)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_u88ce"]
 resource_local_to_scene = true
-a = Vector2(1092.5, -334)
-b = Vector2(785, -444)
+a = Vector2(1492.5, 242.667)
+b = Vector2(692.5, 72.6667)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_16u0h"]
 resource_local_to_scene = true
-a = Vector2(385, -486)
-b = Vector2(785, -444)
+a = Vector2(-52.5, 46)
+b = Vector2(697.5, 69.3333)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7hewt"]
 resource_local_to_scene = true
-a = Vector2(385, -486)
-b = Vector2(20, -472)
+a = Vector2(-52.5, 42.6667)
+b = Vector2(-647.5, 119.333)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vmss7"]
 resource_local_to_scene = true
-a = Vector2(-337.5, -392)
-b = Vector2(20, -472)
+a = Vector2(-1152.5, 279.333)
+b = Vector2(-662.5, 122.667)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nch4a"]
 resource_local_to_scene = true
-a = Vector2(-337.5, -392)
-b = Vector2(-592.5, -276)
+a = Vector2(-1157.5, 289.333)
+b = Vector2(-1502.5, 469.333)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gxrj5"]
 resource_local_to_scene = true
-a = Vector2(-540, -142)
-b = Vector2(-592.5, -276)
+a = Vector2(-1662.5, 566)
+b = Vector2(-1512.5, 466)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xql0u"]
 resource_local_to_scene = true
-a = Vector2(-540, -142)
-b = Vector2(-440, -38)
+a = Vector2(-1657.5, 572.667)
+b = Vector2(-1192.5, 726)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jnbf3"]
 resource_local_to_scene = true
-a = Vector2(-72.5, 58)
-b = Vector2(-440, -38)
+a = Vector2(-447.5, 799.333)
+b = Vector2(-1187.5, 722.667)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wluhd")
@@ -137,24 +137,29 @@ object2 = NodePath("../playzone/Pingouin2")
 y_sort_enabled = true
 
 [node name="Pingouin" parent="playzone" instance=ExtResource("2_sdqw1")]
-position = Vector2(1246, 989)
+position = Vector2(1303, 911)
 semi_scene = ExtResource("6_uygr6")
 interact_speed = 100
 
 [node name="Pingouin2" parent="playzone" instance=ExtResource("2_sdqw1")]
-position = Vector2(1632, 1024)
+position = Vector2(1614, 926)
 player = 1
 semi_scene = ExtResource("6_uygr6")
+interact_speed = 100
+
+[node name="BoiteAgraine" parent="playzone" instance=ExtResource("13_qnmih")]
+position = Vector2(1449, 849)
 
 [node name="bubble" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_sq348")
-position = Vector2(1460, 1034)
-scale = Vector2(0.4, 0.5)
-texture = ExtResource("7_vup1b")
-offset = Vector2(6, -264)
+position = Vector2(1464, 921)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_2ri3n")
+offset = Vector2(-94, -879)
 script = ExtResource("9_w1ad1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bubble"]
+position = Vector2(-45, -595)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bubble/StaticBody2D"]
 position = Vector2(-297.5, 124)
@@ -218,9 +223,6 @@ offset_bottom = 112.0
 texture_normal = ExtResource("10_r0n0n")
 texture_pressed = ExtResource("11_w0lwb")
 texture_hover = ExtResource("12_acnnw")
-
-[node name="BoiteAgraine" parent="." instance=ExtResource("13_qnmih")]
-position = Vector2(1456, 882)
 
 [connection signal="semi_to_spawn" from="playzone/Pingouin" to="." method="_on_semi_instanciated"]
 [connection signal="semi_to_spawn" from="playzone/Pingouin2" to="." method="_on_semi_instanciated"]

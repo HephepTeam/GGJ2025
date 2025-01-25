@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh5c7nftwcerk"]
+[gd_scene load_steps=4 format=3 uid="uid://dh5c7nftwcerk"]
 
 [ext_resource type="Script" path="res://scenes/semi/boite_agraine.gd" id="1_tll11"]
+[ext_resource type="Texture2D" uid="uid://dbin5jmqe0g1g" path="res://assets/Boiite placeholder .png" id="2_61ciy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bqpo3"]
-size = Vector2(152, 72)
+size = Vector2(160, 40)
 
 [node name="BoiteAgraine" type="Area2D"]
 script = ExtResource("1_tll11")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -4)
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_bqpo3")
+
+[node name="BoiitePlaceholder" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_61ciy")
+offset = Vector2(16, -192)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

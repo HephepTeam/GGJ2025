@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnqxqsegjljbv"]
+[gd_scene load_steps=10 format=3 uid="uid://cnqxqsegjljbv"]
 
 [ext_resource type="PackedScene" uid="uid://hbho8jahm6wb" path="res://scenes/semi.tscn" id="1_ym0n8"]
 [ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="2_2ydra"]
-[ext_resource type="Texture2D" uid="uid://d33yxb0787r2q" path="res://assets/terrain/pousse.png" id="2_sr02k"]
 [ext_resource type="Texture2D" uid="uid://bt8rnbhxqyplj" path="res://assets/terrain/Labourer.png" id="3_35fha"]
-[ext_resource type="Texture2D" uid="uid://dgcgreld0sott" path="res://assets/terrain/arbre/Arbre pousse scale.png" id="5_hpsay"]
-[ext_resource type="Texture2D" uid="uid://bam8l8ri1tnmq" path="res://assets/terrain/arbre/Arbre scale.png" id="6_3uhku"]
+[ext_resource type="Texture2D" uid="uid://d33yxb0787r2q" path="res://assets/terrain/Pousse.png" id="4_mboha"]
+[ext_resource type="Texture2D" uid="uid://bbtlkd7b63jtv" path="res://assets/terrain/arbre/2.png" id="5_oe1yq"]
+[ext_resource type="Texture2D" uid="uid://cska785c31sbb" path="res://assets/terrain/arbre/3.png" id="6_5hbh4"]
+[ext_resource type="Texture2D" uid="uid://ctkh0jihvg2fu" path="res://assets/terrain/arbre/4.png" id="7_ktjuy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oqkac"]
 resource_local_to_scene = true
@@ -28,7 +29,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_sr02k")
+"texture": ExtResource("4_mboha")
 }],
 "loop": true,
 "name": &"1",
@@ -36,7 +37,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_hpsay")
+"texture": ExtResource("5_oe1yq")
 }],
 "loop": true,
 "name": &"2",
@@ -44,17 +45,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_3uhku")
+"texture": ExtResource("6_5hbh4")
 }],
 "loop": true,
 "name": &"3",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ktjuy")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
 }]
 
-[node name="SemiTree" instance=ExtResource("1_ym0n8")]
+[node name="SemiTree" groups=["wood"] instance=ExtResource("1_ym0n8")]
+grow_power = 0.04
 y_offset = -96
+evolve_time = 3.0
 
 [node name="visual" parent="." index="1"]
 material = SubResource("ShaderMaterial_oqkac")
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dta8j")
-offset = Vector2(0, -16)
+animation = &"3"
