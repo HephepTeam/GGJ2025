@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2metrrlwxpmi"]
+[gd_scene load_steps=16 format=3 uid="uid://c2metrrlwxpmi"]
 
 [ext_resource type="Script" path="res://scenes/player/pingouin.gd" id="1_3md2u"]
 [ext_resource type="Texture2D" uid="uid://dwlbgfnud66ss" path="res://assets/Pingouin.png" id="2_asqmj"]
+[ext_resource type="PackedScene" uid="uid://cnqxqsegjljbv" path="res://scenes/semi/semi_tree.tscn" id="2_erdur"]
 [ext_resource type="Texture2D" uid="uid://dnhi7afts3384" path="res://assets/viseur.png" id="3_86v3k"]
 [ext_resource type="Texture2D" uid="uid://cv3jtk8pemn6v" path="res://assets/Pingouin_saute.png" id="3_5204e"]
+[ext_resource type="PackedScene" uid="uid://opjsuyerfgq1" path="res://scenes/semi/semi_flower.tscn" id="3_grgvp"]
+[ext_resource type="Texture2D" uid="uid://bklsmd1rui3ky" path="res://assets/tools/arrosoir.png" id="5_4ycuf"]
+[ext_resource type="Texture2D" uid="uid://divh6lk54dgol" path="res://assets/tools/pelle.png" id="5_aoln1"]
+[ext_resource type="Texture2D" uid="uid://qaohrnogcsdo" path="res://assets/tools/aile.png" id="6_2s6uv"]
+[ext_resource type="PackedScene" uid="uid://5njy6j5fnmrh" path="res://scenes/UI/graine_ui.tscn" id="10_rduio"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_042tq"]
 animations = [{
@@ -28,6 +34,17 @@ animations = [{
 radius = 16.0
 height = 96.0
 
+[sub_resource type="Gradient" id="Gradient_0demn"]
+offsets = PackedFloat32Array(0.471831, 0.683099)
+colors = PackedColorArray(0.137255, 0.137255, 0.137255, 0.772549, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mb5lp"]
+gradient = SubResource("Gradient_0demn")
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.75, 0)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_wmca0"]
 radius = 16.0
 
@@ -35,15 +52,56 @@ radius = 16.0
 motion_mode = 1
 script = ExtResource("1_3md2u")
 speed = 250
+possible_semi = Array[PackedScene]([ExtResource("2_erdur"), ExtResource("3_grgvp"), ExtResource("2_erdur")])
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_042tq")
 offset = Vector2(0, -266.667)
 
+[node name="tools" type="Node2D" parent="Visual"]
+position = Vector2(0, -160)
+scale = Vector2(3.33333, 3.33333)
+
+[node name="Rien" type="Sprite2D" parent="Visual/tools"]
+
+[node name="Arrosoir" type="Sprite2D" parent="Visual/tools"]
+visible = false
+position = Vector2(-4.76837e-07, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_4ycuf")
+offset = Vector2(40, 40)
+
+[node name="graine" type="Sprite2D" parent="Visual/tools"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_aoln1")
+offset = Vector2(40, 40)
+
+[node name="deco" type="Sprite2D" parent="Visual/tools"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_aoln1")
+offset = Vector2(40, 40)
+
+[node name="Aile" type="Sprite2D" parent="Visual"]
+position = Vector2(0, -160)
+texture = ExtResource("6_2s6uv")
+offset = Vector2(80, 0)
+
 [node name="body" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ept2f")
+
+[node name="shadow" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.505882)
+show_behind_parent = true
+offset_left = -68.0
+offset_top = -24.0
+offset_right = 68.0
+offset_bottom = 24.0
+pivot_offset = Vector2(68, 24)
+texture = SubResource("GradientTexture2D_mb5lp")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(104, 0)
@@ -66,6 +124,10 @@ offset_left = -32.0
 offset_top = -80.0
 offset_right = 32.0
 offset_bottom = -53.0
+
+[node name="SelectUI" parent="." instance=ExtResource("10_rduio")]
+visible = false
+offset_right = 56.0
 
 [connection signal="area_entered" from="Marker2D/Viseur/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Marker2D/Viseur/Area2D" to="." method="_on_area_2d_area_exited"]

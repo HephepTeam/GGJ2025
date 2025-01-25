@@ -1,38 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://hbho8jahm6wb"]
+[gd_scene load_steps=8 format=3 uid="uid://hbho8jahm6wb"]
 
 [ext_resource type="Script" path="res://scenes/semi.gd" id="1_7qatl"]
-[ext_resource type="Texture2D" uid="uid://cbsho8ansj8p7" path="res://assets/terrain/labourre.png" id="1_rls3q"]
 [ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="2_57lj3"]
-[ext_resource type="Texture2D" uid="uid://cwen1gsgng4t1" path="res://assets/terrain/plantay.png" id="2_rnnv2"]
 [ext_resource type="Texture2D" uid="uid://d33yxb0787r2q" path="res://assets/terrain/pousse.png" id="3_71g0t"]
+[ext_resource type="Texture2D" uid="uid://bt8rnbhxqyplj" path="res://assets/terrain/Labourer.png" id="3_nk04k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vda7m"]
 radius = 24.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kc18a"]
+resource_local_to_scene = true
 shader = ExtResource("2_57lj3")
 shader_parameter/Enabled = false
 shader_parameter/Smooth = true
 shader_parameter/width = 3.0
-shader_parameter/outline_color = Color(0.807296, 0.807296, 0.807296, 1)
+shader_parameter/outline_color = Color(0.356863, 0.886275, 0.286275, 1)
 shader_parameter/pixel_size = 1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y4sty"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_rls3q")
+"texture": ExtResource("3_nk04k")
 }],
 "loop": true,
-"name": &"labourre",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_rnnv2")
-}],
-"loop": true,
-"name": &"plantay",
+"name": &"0",
 "speed": 5.0
 }, {
 "frames": [{
@@ -40,7 +32,7 @@ animations = [{
 "texture": ExtResource("3_71g0t")
 }],
 "loop": true,
-"name": &"pousse",
+"name": &"1",
 "speed": 5.0
 }]
 
@@ -56,5 +48,5 @@ shape = SubResource("CircleShape2D_vda7m")
 [node name="visual" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_kc18a")
 sprite_frames = SubResource("SpriteFrames_y4sty")
-animation = &"pousse"
-offset = Vector2(0, -16)
+animation = &"0"
+offset = Vector2(0, -32)

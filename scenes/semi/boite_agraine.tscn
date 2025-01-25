@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh5c7nftwcerk"]
+
+[ext_resource type="Script" path="res://scenes/semi/boite_agraine.gd" id="1_tll11"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqpo3"]
+size = Vector2(152, 72)
+
+[node name="BoiteAgraine" type="Area2D"]
+script = ExtResource("1_tll11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -4)
+shape = SubResource("RectangleShape2D_bqpo3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

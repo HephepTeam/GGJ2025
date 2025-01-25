@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnqxqsegjljbv"]
+
+[ext_resource type="PackedScene" uid="uid://hbho8jahm6wb" path="res://scenes/semi.tscn" id="1_ym0n8"]
+[ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="2_2ydra"]
+[ext_resource type="Texture2D" uid="uid://d33yxb0787r2q" path="res://assets/terrain/pousse.png" id="2_sr02k"]
+[ext_resource type="Texture2D" uid="uid://bt8rnbhxqyplj" path="res://assets/terrain/Labourer.png" id="3_35fha"]
+[ext_resource type="Texture2D" uid="uid://dgcgreld0sott" path="res://assets/terrain/arbre/Arbre pousse scale.png" id="5_hpsay"]
+[ext_resource type="Texture2D" uid="uid://bam8l8ri1tnmq" path="res://assets/terrain/arbre/Arbre scale.png" id="6_3uhku"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqkac"]
+resource_local_to_scene = true
+shader = ExtResource("2_2ydra")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 3.0
+shader_parameter/outline_color = Color(0.356863, 0.886275, 0.286275, 1)
+shader_parameter/pixel_size = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dta8j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_35fha")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sr02k")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hpsay")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3uhku")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="SemiTree" instance=ExtResource("1_ym0n8")]
+y_offset = -96
+
+[node name="visual" parent="." index="1"]
+material = SubResource("ShaderMaterial_oqkac")
+sprite_frames = SubResource("SpriteFrames_dta8j")
+offset = Vector2(0, -16)

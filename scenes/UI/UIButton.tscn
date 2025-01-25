@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b506tqxvep42k"]
+
+[ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="1_dq8vu"]
+[ext_resource type="Texture2D" uid="uid://b15slr2ooiamc" path="res://assets/UI/xbox_button_color_y.png" id="2_m3i7a"]
+[ext_resource type="Script" path="res://scenes/UI/ui_button.gd" id="3_cwloh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qj4a"]
+resource_local_to_scene = true
+shader = ExtResource("1_dq8vu")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 16.0
+shader_parameter/outline_color = Color(0.710464, 0.710464, 0.710464, 1)
+shader_parameter/pixel_size = 4
+
+[node name="Ybutton" type="TextureRect"]
+material = SubResource("ShaderMaterial_4qj4a")
+custom_minimum_size = Vector2(32, 32)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("2_m3i7a")
+expand_mode = 4
+script = ExtResource("3_cwloh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 64.0
+offset_bottom = 8.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+text = "Arbre"
+horizontal_alignment = 1
+vertical_alignment = 1

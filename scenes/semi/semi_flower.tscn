@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://opjsuyerfgq1"]
+
+[ext_resource type="PackedScene" uid="uid://hbho8jahm6wb" path="res://scenes/semi.tscn" id="1_0fc1n"]
+[ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="2_jj2wt"]
+[ext_resource type="Texture2D" uid="uid://bt8rnbhxqyplj" path="res://assets/terrain/Labourer.png" id="3_w8wkv"]
+[ext_resource type="Texture2D" uid="uid://d33yxb0787r2q" path="res://assets/terrain/pousse.png" id="4_sajqg"]
+[ext_resource type="Texture2D" uid="uid://cffjwwpyv6qxd" path="res://assets/terrain/fleur/fleur.png" id="5_1hvdj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqkac"]
+resource_local_to_scene = true
+shader = ExtResource("2_jj2wt")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 3.0
+shader_parameter/outline_color = Color(0.356863, 0.886275, 0.286275, 1)
+shader_parameter/pixel_size = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_syf1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_w8wkv")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_sajqg")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1hvdj")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1hvdj")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="SemiFlower" instance=ExtResource("1_0fc1n")]
+y_offset = -96
+
+[node name="visual" parent="." index="1"]
+material = SubResource("ShaderMaterial_oqkac")
+sprite_frames = SubResource("SpriteFrames_syf1w")
+animation = &"3"
+offset = Vector2(0, -16)
