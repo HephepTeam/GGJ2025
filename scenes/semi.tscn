@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d33yxb0787r2q" path="res://assets/terrain/Pousse.png" id="4_g2r78"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vda7m"]
-radius = 24.0
+radius = 29.0172
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kc18a"]
 resource_local_to_scene = true

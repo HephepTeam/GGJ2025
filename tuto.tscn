@@ -1,0 +1,721 @@
+[gd_scene load_steps=20 format=3 uid="uid://cwvicoipnmhxq"]
+
+[ext_resource type="Script" path="res://tuto.gd" id="1_85xol"]
+[ext_resource type="Texture2D" uid="uid://kmqiy3dentdl" path="res://assets/UI/keyboard prompts/keyboard_empty.png" id="2_g5lqc"]
+[ext_resource type="Texture2D" uid="uid://6mit8fb03k2w" path="res://assets/UI/keyboard prompts/keyboard_d.png" id="3_8iwvn"]
+[ext_resource type="Texture2D" uid="uid://dt0u00xal72ei" path="res://assets/UI/keyboard prompts/keyboard_s.png" id="5_7xjcm"]
+[ext_resource type="Texture2D" uid="uid://bb5s2jysaquwk" path="res://assets/UI/keyboard prompts/keyboard_z.png" id="6_kx3ys"]
+[ext_resource type="Texture2D" uid="uid://ckos481il2rds" path="res://assets/UI/keyboard prompts/keyboard_tab.png" id="7_6ptdb"]
+[ext_resource type="Texture2D" uid="uid://vymtwy0kym0m" path="res://assets/UI/xbox_button_color_x.png" id="8_cpotx"]
+[ext_resource type="Texture2D" uid="uid://b15slr2ooiamc" path="res://assets/UI/xbox_button_color_y.png" id="9_p1y2x"]
+[ext_resource type="Texture2D" uid="uid://5fwemkahghr8" path="res://assets/UI/xbox_button_color_b.png" id="10_yshxt"]
+[ext_resource type="Texture2D" uid="uid://dcust7lxnk2q8" path="res://assets/UI/keyboard prompts/keyboard_ctrl.png" id="11_fd6ds"]
+[ext_resource type="Texture2D" uid="uid://1usdagb2tb8b" path="res://assets/UI/keyboard prompts/keyboard_3.png" id="12_2v7yd"]
+[ext_resource type="Texture2D" uid="uid://de4rw2ffm7p85" path="res://assets/UI/keyboard prompts/keyboard_1.png" id="13_s1df6"]
+[ext_resource type="Texture2D" uid="uid://qu741wcwkb70" path="res://assets/UI/keyboard prompts/keyboard_2.png" id="14_cieas"]
+[ext_resource type="Texture2D" uid="uid://dm5o07kjkq8fs" path="res://assets/UI/keyboard prompts/keyboard_5.png" id="15_nmogg"]
+[ext_resource type="Texture2D" uid="uid://b5ufn8guj3rdt" path="res://assets/UI/keyboard prompts/keyboard_numpad_plus.png" id="16_dvc7m"]
+[ext_resource type="Theme" uid="uid://brq08doux6t1x" path="res://scenes/theme.tres" id="17_eggeb"]
+[ext_resource type="Texture2D" uid="uid://bamirmywr6wdw" path="res://assets/UI/keyboard prompts/keyboard_7.png" id="17_lqqui"]
+[ext_resource type="Texture2D" uid="uid://cl8hnd15c5rkk" path="res://assets/UI/keyboard prompts/keyboard_8.png" id="18_yywng"]
+[ext_resource type="Texture2D" uid="uid://dk4bx2n4wmsh2" path="res://assets/UI/keyboard prompts/keyboard_9.png" id="19_3rf4i"]
+
+[node name="Tuto" type="CanvasLayer"]
+script = ExtResource("1_85xol")
+
+[node name="P1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 121.0
+offset_top = 192.0
+offset_right = 161.0
+offset_bottom = 232.0
+scale = Vector2(1.5, 1.5)
+mouse_filter = 2
+
+[node name="info6" type="NinePatchRect" parent="P1"]
+modulate = Color(0.054902, 0.054902, 0.054902, 0.560784)
+layout_mode = 0
+offset_left = 6.66666
+offset_top = 38.6668
+offset_right = 526.667
+offset_bottom = 454.667
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="info5" type="NinePatchRect" parent="P1"]
+modulate = Color(0.535421, 0.535421, 0.535421, 1)
+layout_mode = 0
+offset_top = 32.0
+offset_right = 520.0
+offset_bottom = 448.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="info" type="NinePatchRect" parent="P1"]
+modulate = Color(0.361325, 0.361325, 0.361325, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 232.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P1/info"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 48.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "switch tool"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="P1/info"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 59.0
+offset_top = 37.0
+offset_right = 120.0
+offset_bottom = 104.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "or right trigger"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="info4" type="NinePatchRect" parent="P1"]
+modulate = Color(0.361325, 0.361325, 0.361325, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 328.0
+offset_right = 128.0
+offset_bottom = 432.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P1/info4"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_top = 56.0
+offset_right = 120.0
+offset_bottom = 104.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "converse"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="info2" type="NinePatchRect" parent="P1"]
+modulate = Color(0.361325, 0.361325, 0.361325, 1)
+layout_mode = 0
+offset_left = 136.0
+offset_top = 200.0
+offset_right = 392.0
+offset_bottom = 328.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P1/info2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 56.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "movement"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="info3" type="NinePatchRect" parent="P1"]
+modulate = Color(0.361325, 0.361325, 0.361325, 1)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 512.0
+offset_bottom = 192.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P1/info3"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 8.0
+offset_right = 304.0
+offset_bottom = 56.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="zqsd" type="Control" parent="P1"]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 104.0
+offset_bottom = 48.0
+
+[node name="D" type="TextureRect" parent="P1/zqsd"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 320.0
+offset_bottom = 320.0
+texture = ExtResource("3_8iwvn")
+
+[node name="Q" type="TextureRect" parent="P1/zqsd"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 256.0
+offset_right = 192.0
+offset_bottom = 320.0
+texture = ExtResource("2_g5lqc")
+
+[node name="Label2" type="Label" parent="P1/zqsd/Q"]
+modulate = Color(0.360784, 0.360784, 0.360784, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.042
+anchor_bottom = 0.094
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 53.312
+offset_bottom = 49.984
+theme_override_colors/font_outline_color = Color(0.360784, 0.360784, 0.360784, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 22
+text = "Q/A "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="S" type="TextureRect" parent="P1/zqsd"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 320.0
+texture = ExtResource("5_7xjcm")
+
+[node name="Z" type="TextureRect" parent="P1/zqsd"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("6_kx3ys")
+
+[node name="actions" type="Control" parent="P1"]
+anchors_preset = 0
+offset_left = 64.0
+offset_right = 104.0
+offset_bottom = 40.0
+
+[node name="switch" type="TextureRect" parent="P1/actions"]
+layout_mode = 0
+offset_left = -56.0
+offset_top = 167.333
+offset_right = 8.0
+offset_bottom = 231.333
+texture = ExtResource("7_6ptdb")
+
+[node name="X" type="TextureRect" parent="P1/actions"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 192.0
+offset_bottom = 192.0
+texture = ExtResource("13_s1df6")
+
+[node name="button" type="TextureRect" parent="P1/actions/X"]
+modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_cpotx")
+
+[node name="Y" type="TextureRect" parent="P1/actions"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 192.0
+texture = ExtResource("14_cieas")
+
+[node name="button" type="TextureRect" parent="P1/actions/Y"]
+modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_p1y2x")
+
+[node name="B_erase" type="TextureRect" parent="P1/actions"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 320.0
+offset_bottom = 192.0
+texture = ExtResource("12_2v7yd")
+
+[node name="button" type="TextureRect" parent="P1/actions/B_erase"]
+modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_yshxt")
+
+[node name="noot" type="TextureRect" parent="P1/actions"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 328.0
+offset_right = 40.0
+offset_bottom = 392.0
+texture = ExtResource("11_fd6ds")
+
+[node name="Player_label2" type="NinePatchRect" parent="P1"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 344.0
+offset_right = 496.0
+offset_bottom = 432.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P1/Player_label2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 88.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "... or gamepad!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player_label" type="NinePatchRect" parent="P1"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 40.0
+offset_right = 344.0
+offset_bottom = 104.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P1/Player_label"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 184.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 27
+text = "PLAYER 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 985.0
+offset_top = 204.0
+offset_right = 1025.0
+offset_bottom = 244.0
+scale = Vector2(1.5, 1.5)
+mouse_filter = 2
+
+[node name="info6" type="NinePatchRect" parent="P2"]
+modulate = Color(0.054902, 0.054902, 0.054902, 0.560784)
+layout_mode = 0
+offset_left = 6.66671
+offset_top = 30.6666
+offset_right = 526.667
+offset_bottom = 446.667
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="info5" type="NinePatchRect" parent="P2"]
+modulate = Color(0.535421, 0.535421, 0.535421, 1)
+layout_mode = 0
+offset_top = 24.0
+offset_right = 520.0
+offset_bottom = 440.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="info" type="NinePatchRect" parent="P2"]
+modulate = Color(0.361325, 0.361325, 0.361325, 1)
+layout_mode = 0
+offset_left = 392.0
+offset_top = 128.0
+offset_right = 512.0
+offset_bottom = 232.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P2/info"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 48.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "switch tool"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="P2/info"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 59.3334
+offset_top = 36.6667
+offset_right = 120.333
+offset_bottom = 103.667
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "or right trigger"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="info4" type="NinePatchRect" parent="P2"]
+modulate = Color(0.361325, 0.361325, 0.361325, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 328.0
+offset_right = 128.0
+offset_bottom = 432.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P2/info4"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_top = 56.0
+offset_right = 120.0
+offset_bottom = 104.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "converse"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="info2" type="NinePatchRect" parent="P2"]
+modulate = Color(0.361325, 0.361325, 0.361325, 1)
+layout_mode = 0
+offset_left = 128.0
+offset_top = 200.0
+offset_right = 384.0
+offset_bottom = 328.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P2/info2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_top = 8.0
+offset_right = 112.0
+offset_bottom = 56.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "movement"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="info3" type="NinePatchRect" parent="P2"]
+modulate = Color(0.361325, 0.361325, 0.361325, 1)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 384.0
+offset_bottom = 192.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P2/info3"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 56.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="zqsd" type="Control" parent="P2"]
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 48.0
+
+[node name="D" type="TextureRect" parent="P2/zqsd"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 320.0
+offset_bottom = 320.0
+texture = ExtResource("12_2v7yd")
+
+[node name="Q" type="TextureRect" parent="P2/zqsd"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 256.0
+offset_right = 192.0
+offset_bottom = 320.0
+texture = ExtResource("13_s1df6")
+
+[node name="S" type="TextureRect" parent="P2/zqsd"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 320.0
+texture = ExtResource("14_cieas")
+
+[node name="Z" type="TextureRect" parent="P2/zqsd"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("15_nmogg")
+
+[node name="actions" type="Control" parent="P2"]
+anchors_preset = 0
+offset_left = 57.3333
+offset_right = 97.3333
+offset_bottom = 40.0
+
+[node name="switch" type="TextureRect" parent="P2/actions"]
+layout_mode = 0
+offset_left = 334.667
+offset_top = 168.0
+offset_right = 398.667
+offset_bottom = 232.0
+texture = ExtResource("16_dvc7m")
+
+[node name="X" type="TextureRect" parent="P2/actions"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 192.0
+offset_bottom = 192.0
+texture = ExtResource("17_lqqui")
+
+[node name="button" type="TextureRect" parent="P2/actions/X"]
+modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_cpotx")
+
+[node name="Y" type="TextureRect" parent="P2/actions"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 192.0
+texture = ExtResource("18_yywng")
+
+[node name="button" type="TextureRect" parent="P2/actions/Y"]
+modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_p1y2x")
+
+[node name="B_erase" type="TextureRect" parent="P2/actions"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 320.0
+offset_bottom = 192.0
+texture = ExtResource("19_3rf4i")
+
+[node name="button" type="TextureRect" parent="P2/actions/B_erase"]
+modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_yshxt")
+
+[node name="Player_label2" type="NinePatchRect" parent="P2"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 344.0
+offset_right = 496.0
+offset_bottom = 432.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P2/Player_label2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 88.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 19
+text = "... or gamepad!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2_label" type="NinePatchRect" parent="P2"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 32.0
+offset_right = 344.0
+offset_bottom = 96.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P2/Player2_label"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 27
+text = "PLAYER 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2_label2" type="NinePatchRect" parent="P2"]
+layout_mode = 0
+offset_left = 21.3333
+offset_top = 336.0
+offset_right = 109.333
+offset_bottom = 384.0
+texture = ExtResource("2_g5lqc")
+region_rect = Rect2(8, 8, 48, 48)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="P2/Player2_label2"]
+modulate = Color(0.360784, 0.360784, 0.360784, 1)
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 48.0
+theme_override_colors/font_outline_color = Color(0.360784, 0.360784, 0.360784, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 22
+text = "0 / INS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -13.0
+offset_top = -64.0
+offset_right = 27.0
+offset_bottom = -24.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="menu"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 960.0
+offset_right = 1775.0
+offset_bottom = 1024.0
+focus_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ButtonOnePlayer" type="Button" parent="menu/HBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme = ExtResource("17_eggeb")
+text = "1 PLAYER"
+
+[node name="ButtonTwoPlayer" type="Button" parent="menu/HBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme = ExtResource("17_eggeb")
+text = "2 PLAYERS"
+
+[connection signal="pressed" from="menu/HBoxContainer/ButtonOnePlayer" to="." method="_on_p_pressed"]
+[connection signal="pressed" from="menu/HBoxContainer/ButtonTwoPlayer" to="." method="_on_2p_pressed"]

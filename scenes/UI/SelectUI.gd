@@ -1,13 +1,11 @@
 extends Control
 
-signal object_chosed(obj)
+signal object_chosed(obj, price)
 
 @export var enabled = false
 @export var Possible_object : Array[PackedScene]
 
 var player : int
-
-
 
 func _process(delta: float) -> void:
 	if enabled:

@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4d12k1oepede"]
+
+[ext_resource type="PackedScene" uid="uid://bbwjinx6o73fm" path="res://scenes/crafted.tscn" id="1_fefe2"]
+[ext_resource type="Script" path="res://scenes/pingouin_placeholder.gd" id="2_12l7m"]
+[ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="3_c0f2x"]
+[ext_resource type="Texture2D" uid="uid://djhp60yocdl6m" path="res://assets/crafted/transat pingouin.png" id="5_7mso1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fdvsc"]
+radius = 16.0
+height = 80.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_swc1g"]
+resource_local_to_scene = true
+shader = ExtResource("3_c0f2x")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 8.0
+shader_parameter/outline_color = Color(1, 0.45048, 0.776026, 1)
+shader_parameter/pixel_size = 4
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7i2g7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7mso1")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_21fp1"]
+radius = 24.0
+
+[node name="PingouinPlaceholder" instance=ExtResource("1_fefe2")]
+script = ExtResource("2_12l7m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fdvsc")
+
+[node name="visual" parent="." index="1"]
+material = SubResource("ShaderMaterial_swc1g")
+position = Vector2(0, 0)
+scale = Vector2(0.65, 0.65)
+sprite_frames = SubResource("SpriteFrames_7i2g7")
+animation = &"1"
+offset = Vector2(0, -208)
+
+[node name="interactionZone" parent="." index="2"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactionZone" index="0"]
+position = Vector2(8, -16)
+shape = SubResource("CircleShape2D_21fp1")

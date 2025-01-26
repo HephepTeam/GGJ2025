@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnqxqsegjljbv"]
+[gd_scene load_steps=11 format=3 uid="uid://cnqxqsegjljbv"]
 
 [ext_resource type="PackedScene" uid="uid://hbho8jahm6wb" path="res://scenes/semi.tscn" id="1_ym0n8"]
 [ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="2_2ydra"]
@@ -7,13 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://bbtlkd7b63jtv" path="res://assets/terrain/arbre/2.png" id="5_oe1yq"]
 [ext_resource type="Texture2D" uid="uid://cska785c31sbb" path="res://assets/terrain/arbre/3.png" id="6_5hbh4"]
 [ext_resource type="Texture2D" uid="uid://ctkh0jihvg2fu" path="res://assets/terrain/arbre/4.png" id="7_ktjuy"]
+[ext_resource type="AudioStream" uid="uid://ci3ilafrf34ri" path="res://assets/sfx/Destruction_wood-crate-destory-2-97263.mp3" id="8_nuquc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oqkac"]
 resource_local_to_scene = true
 shader = ExtResource("2_2ydra")
 shader_parameter/Enabled = false
 shader_parameter/Smooth = true
-shader_parameter/width = 3.0
+shader_parameter/width = 6.0
 shader_parameter/outline_color = Color(0.356863, 0.886275, 0.286275, 1)
 shader_parameter/pixel_size = 1
 
@@ -65,8 +66,15 @@ grow_power = 0.04
 y_offset = -96
 evolve_time = 3.0
 
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0)
+
 [node name="visual" parent="." index="1"]
 material = SubResource("ShaderMaterial_oqkac")
+position = Vector2(-1, 6)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dta8j")
-animation = &"3"
+animation = &"4"
+
+[node name="sfx" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("8_nuquc")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5njy6j5fnmrh"]
+[gd_scene load_steps=11 format=3 uid="uid://5njy6j5fnmrh"]
 
 [ext_resource type="PackedScene" uid="uid://b506tqxvep42k" path="res://scenes/UI/UIButton.tscn" id="1_1k8jm"]
 [ext_resource type="Script" path="res://scenes/UI/SelectUI.gd" id="1_ajpsa"]
@@ -9,6 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://5fwemkahghr8" path="res://assets/UI/xbox_button_color_b.png" id="4_v1580"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ul2bg"]
+resource_local_to_scene = true
+shader = ExtResource("2_tkhyk")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 16.0
+shader_parameter/outline_color = Color(0.710464, 0.710464, 0.710464, 1)
+shader_parameter/pixel_size = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fr3w8"]
 resource_local_to_scene = true
 shader = ExtResource("2_tkhyk")
 shader_parameter/Enabled = false
@@ -38,36 +47,28 @@ Possible_object = Array[PackedScene]([ExtResource("3_qm1r1"), ExtResource("2_6fe
 [node name="X" parent="." instance=ExtResource("1_1k8jm")]
 material = SubResource("ShaderMaterial_ul2bg")
 layout_mode = 0
-offset_left = -72.0
+offset_left = 0.0
 offset_top = -208.0
-offset_right = -24.0
+offset_right = 48.0
 offset_bottom = -160.0
 texture = ExtResource("3_la5da")
 text = "Arbre"
 
 [node name="Y" parent="." instance=ExtResource("1_1k8jm")]
-material = SubResource("ShaderMaterial_ul2bg")
+material = SubResource("ShaderMaterial_fr3w8")
 layout_mode = 0
-offset_top = -256.0
-offset_bottom = -208.0
-text = "Arbre"
+offset_left = 64.0
+offset_top = -272.0
+offset_right = 112.0
+offset_bottom = -224.0
+text = "Fleur"
 
 [node name="B" parent="." instance=ExtResource("1_1k8jm")]
 material = SubResource("ShaderMaterial_6hjxf")
 layout_mode = 0
-offset_left = 24.0
+offset_left = 128.0
 offset_top = -208.0
-offset_right = 72.0
-offset_bottom = -160.0
-texture = ExtResource("4_v1580")
-text = "Buisson"
-
-[node name="B2" parent="." instance=ExtResource("1_1k8jm")]
-material = SubResource("ShaderMaterial_6hjxf")
-layout_mode = 0
-offset_left = 24.0
-offset_top = -208.0
-offset_right = 72.0
+offset_right = 176.0
 offset_bottom = -160.0
 texture = ExtResource("4_v1580")
 text = "Buisson"

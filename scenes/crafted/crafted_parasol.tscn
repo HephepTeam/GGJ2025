@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://djxsq3020amwc"]
+
+[ext_resource type="PackedScene" uid="uid://bbwjinx6o73fm" path="res://scenes/crafted.tscn" id="1_gwoe8"]
+[ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="2_7qqlu"]
+[ext_resource type="Texture2D" uid="uid://cjeqq3xdyoakt" path="res://assets/crafted/Parasol.png" id="3_3opdb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3db1g"]
+resource_local_to_scene = true
+shader = ExtResource("2_7qqlu")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 8.0
+shader_parameter/outline_color = Color(1, 0.45048, 0.776026, 1)
+shader_parameter/pixel_size = 4
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_67ryl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3opdb")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}]
+
+[node name="craftedParasol" instance=ExtResource("1_gwoe8")]
+
+[node name="visual" parent="." index="0"]
+material = SubResource("ShaderMaterial_3db1g")
+position = Vector2(0, 0)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_67ryl")
+animation = &"0"
+offset = Vector2(-16, -144)

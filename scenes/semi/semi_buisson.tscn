@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfmiq2biponos"]
+
+[ext_resource type="PackedScene" uid="uid://hbho8jahm6wb" path="res://scenes/semi.tscn" id="1_wldc2"]
+[ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="2_4dqy1"]
+[ext_resource type="Texture2D" uid="uid://bt8rnbhxqyplj" path="res://assets/terrain/Labourer.png" id="3_bdikt"]
+[ext_resource type="Texture2D" uid="uid://d33yxb0787r2q" path="res://assets/terrain/Pousse.png" id="4_r7m1y"]
+[ext_resource type="Texture2D" uid="uid://d2p3gwvjw3cax" path="res://assets/terrain/buisson/2.png" id="5_q7vr1"]
+[ext_resource type="Texture2D" uid="uid://bbox66mue8cho" path="res://assets/terrain/buisson/3.png" id="6_agq6b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibxuu"]
+resource_local_to_scene = true
+shader = ExtResource("2_4dqy1")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 6.0
+shader_parameter/outline_color = Color(0.356863, 0.886275, 0.286275, 1)
+shader_parameter/pixel_size = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsc4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bdikt")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_r7m1y")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_q7vr1")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_agq6b")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="SemiBuisson" instance=ExtResource("1_wldc2")]
+grow_power = 0.02
+
+[node name="visual" parent="." index="1"]
+material = SubResource("ShaderMaterial_ibxuu")
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_gsc4f")
+animation = &"3"

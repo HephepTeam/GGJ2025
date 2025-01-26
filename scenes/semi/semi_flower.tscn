@@ -1,54 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://opjsuyerfgq1"]
+[gd_scene load_steps=6 format=3 uid="uid://opjsuyerfgq1"]
 
 [ext_resource type="PackedScene" uid="uid://hbho8jahm6wb" path="res://scenes/semi.tscn" id="1_0fc1n"]
 [ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="2_jj2wt"]
-[ext_resource type="Texture2D" uid="uid://bt8rnbhxqyplj" path="res://assets/terrain/Labourer.png" id="3_w8wkv"]
-[ext_resource type="Texture2D" uid="uid://d33yxb0787r2q" path="res://assets/terrain/Pousse.png" id="4_13l4v"]
-[ext_resource type="Texture2D" uid="uid://b5gb3o6jy5ytp" path="res://assets/terrain/fleur/Tulipe.png" id="5_niqfi"]
+[ext_resource type="SpriteFrames" uid="uid://gismwlw5u6jh" path="res://scenes/semi/tulipe.tres" id="3_7xdyu"]
+[ext_resource type="SpriteFrames" uid="uid://dte8bhqiqtp2k" path="res://scenes/semi/dandelion.tres" id="3_d6gb4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oqkac"]
 resource_local_to_scene = true
 shader = ExtResource("2_jj2wt")
 shader_parameter/Enabled = false
 shader_parameter/Smooth = true
-shader_parameter/width = 3.0
+shader_parameter/width = 6.0
 shader_parameter/outline_color = Color(0.356863, 0.886275, 0.286275, 1)
 shader_parameter/pixel_size = 1
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_syf1w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_w8wkv")
-}],
-"loop": true,
-"name": &"0",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_13l4v")
-}],
-"loop": true,
-"name": &"1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_niqfi")
-}],
-"loop": true,
-"name": &"2",
-"speed": 5.0
-}]
-
 [node name="SemiFlower" instance=ExtResource("1_0fc1n")]
-grow_power = 0.02
+grow_power = 0.005
 y_offset = -96
 evolve_time = 1.5
+fleurs = Array[SpriteFrames]([ExtResource("3_d6gb4"), ExtResource("3_7xdyu")])
 
 [node name="visual" parent="." index="1"]
 material = SubResource("ShaderMaterial_oqkac")
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_syf1w")
+sprite_frames = ExtResource("3_d6gb4")
 animation = &"2"

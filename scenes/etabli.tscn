@@ -1,20 +1,118 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuy0gtevrnml7"]
+[gd_scene load_steps=12 format=3 uid="uid://cuy0gtevrnml7"]
 
 [ext_resource type="Script" path="res://scenes/etabli.gd" id="1_5mm4p"]
-[ext_resource type="Texture2D" uid="uid://dbin5jmqe0g1g" path="res://assets/Boiite placeholder .png" id="1_fx1nm"]
+[ext_resource type="Texture2D" uid="uid://baqluu8ur80sx" path="res://assets/etabli_placeholder .png" id="2_avnf6"]
+[ext_resource type="Texture2D" uid="uid://bms1x5rfaidrl" path="res://assets/decors/Panneau.png" id="2_qraq3"]
+[ext_resource type="Texture2D" uid="uid://b3h6lpryjtjs7" path="res://assets/tools/wood.png" id="4_f3sxv"]
+[ext_resource type="AudioStream" uid="uid://bwgy1e01vqv6q" path="res://assets/sfx/wrong-47985.mp3" id="5_828oo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvmfx"]
-size = Vector2(160, 40)
+size = Vector2(93, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ak78k"]
+radius = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xp3rx"]
+height = 80.0
+
+[sub_resource type="Animation" id="Animation_7r2hb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoiitePlaceholder/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a5rll"]
+resource_name = "blink"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoiitePlaceholder/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.917647, 0, 0.266667, 1), Color(1, 1, 1, 1), Color(0.917647, 0, 0.266667, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_78kd5"]
+_data = {
+"RESET": SubResource("Animation_7r2hb"),
+"blink": SubResource("Animation_a5rll")
+}
 
 [node name="etabli" type="Area2D"]
 script = ExtResource("1_5mm4p")
 
+[node name="Panneau" type="Sprite2D" parent="."]
+position = Vector2(0, -120)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qraq3")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 44)
+position = Vector2(1.5, 16)
 shape = SubResource("RectangleShape2D_kvmfx")
 
 [node name="BoiitePlaceholder" type="Sprite2D" parent="."]
-position = Vector2(0, 32)
+position = Vector2(0, 8)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_fx1nm")
+texture = ExtResource("2_avnf6")
 offset = Vector2(16, -192)
+
+[node name="Label" type="Label" parent="BoiitePlaceholder"]
+offset_left = -70.0
+offset_top = -372.0
+offset_right = 78.0
+offset_bottom = -307.0
+rotation = 0.261799
+pivot_offset = Vector2(80, 32)
+theme_override_font_sizes/font_size = 47
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Collector" type="Area2D" parent="."]
+position = Vector2(0, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collector"]
+shape = SubResource("CircleShape2D_ak78k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(8, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xp3rx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_78kd5")
+}
+
+[node name="Wood" type="Sprite2D" parent="."]
+position = Vector2(28, -155)
+rotation = 0.523598
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_f3sxv")
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_828oo")
+volume_db = -3.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="Collector" to="." method="_on_collector_area_entered"]

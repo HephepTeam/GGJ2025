@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://81tnnymwckbh"
+path="res://.godot/imported/Choc bois_hit-by-a-wood-230542.mp3-8f9d9806c55ac86041abfb77029f2581.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Choc bois_hit-by-a-wood-230542.mp3"
+dest_files=["res://.godot/imported/Choc bois_hit-by-a-wood-230542.mp3-8f9d9806c55ac86041abfb77029f2581.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

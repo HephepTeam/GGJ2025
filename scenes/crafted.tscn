@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbwjinx6o73fm"]
+
+[ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="1_igo4y"]
+[ext_resource type="Script" path="res://scenes/crafted.gd" id="1_tbjcs"]
+[ext_resource type="Texture2D" uid="uid://bb21q22v40050" path="res://assets/crafted/transat.png" id="2_do1uw"]
+[ext_resource type="Script" path="res://scenes/interaction_zone.gd" id="4_pwkpc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqifc"]
+resource_local_to_scene = true
+shader = ExtResource("1_igo4y")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 8.0
+shader_parameter/outline_color = Color(1, 0.45048, 0.776026, 1)
+shader_parameter/pixel_size = 4
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxhhf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_do1uw")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}]
+
+[node name="crafted" type="StaticBody2D"]
+script = ExtResource("1_tbjcs")
+
+[node name="visual" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_eqifc")
+position = Vector2(-1, -44)
+sprite_frames = SubResource("SpriteFrames_kxhhf")
+animation = &"0"
+
+[node name="interactionZone" type="Area2D" parent="."]
+script = ExtResource("4_pwkpc")
+
+[connection signal="area_entered" from="interactionZone" to="." method="_on_interaction_zone_area_entered"]
+[connection signal="area_exited" from="interactionZone" to="." method="_on_interaction_zone_area_exited"]
+[connection signal="body_entered" from="interactionZone" to="." method="_on_interaction_zone_body_entered"]
+[connection signal="body_exited" from="interactionZone" to="." method="_on_interaction_zone_body_exited"]

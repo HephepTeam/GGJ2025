@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctbwibhpre21o"]
+
+[ext_resource type="PackedScene" uid="uid://bbwjinx6o73fm" path="res://scenes/crafted.tscn" id="1_27o03"]
+[ext_resource type="Shader" path="res://scenes/shaders/outline.gdshader" id="2_itkj5"]
+[ext_resource type="Texture2D" uid="uid://umqep2bnkutm" path="res://assets/crafted/nain.png" id="3_nxerj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqk1g"]
+resource_local_to_scene = true
+shader = ExtResource("2_itkj5")
+shader_parameter/Enabled = false
+shader_parameter/Smooth = true
+shader_parameter/width = 8.0
+shader_parameter/outline_color = Color(1, 0.45048, 0.776026, 1)
+shader_parameter/pixel_size = 4
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3ofg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nxerj")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}]
+
+[node name="craftedNain" instance=ExtResource("1_27o03")]
+
+[node name="visual" parent="." index="0"]
+material = SubResource("ShaderMaterial_kqk1g")
+position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_r3ofg")
+animation = &"0"
+offset = Vector2(0, -48)

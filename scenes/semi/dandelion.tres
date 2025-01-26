@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dte8bhqiqtp2k"]
+
+[ext_resource type="Texture2D" uid="uid://bt8rnbhxqyplj" path="res://assets/terrain/Labourer.png" id="1_p1ejq"]
+[ext_resource type="Texture2D" uid="uid://d33yxb0787r2q" path="res://assets/terrain/Pousse.png" id="2_lokea"]
+[ext_resource type="Texture2D" uid="uid://ib1vmgxwbw33" path="res://assets/terrain/fleur/Dandelion.png" id="3_ayn54"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p1ejq")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lokea")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ayn54")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}]

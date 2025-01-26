@@ -1,28 +1,37 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjqt300su8ftc"]
+[gd_scene load_steps=35 format=3 uid="uid://bjqt300su8ftc"]
 
 [ext_resource type="Texture2D" uid="uid://bckdtfjnrj1ea" path="res://assets/decors/background.jpeg" id="1_fhgcc"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_wluhd"]
 [ext_resource type="PackedScene" uid="uid://c2metrrlwxpmi" path="res://scenes/player/pingouin.tscn" id="2_sdqw1"]
-[ext_resource type="Texture2D" uid="uid://dn8awr1n7m0mu" path="res://assets/decors/sol_tile.png" id="2_xlrkn"]
+[ext_resource type="Texture2D" uid="uid://d1okj7shpbfpv" path="res://assets/decors/Sol_cratere.png" id="3_mywxk"]
 [ext_resource type="Script" path="res://scenes/camera_2d.gd" id="4_x01hk"]
 [ext_resource type="PackedScene" uid="uid://cnqxqsegjljbv" path="res://scenes/semi/semi_tree.tscn" id="6_uygr6"]
 [ext_resource type="Shader" path="res://scenes/sway.gdshader" id="7_bgukk"]
 [ext_resource type="Texture2D" uid="uid://cscocjwq6tm75" path="res://assets/decors/Bulle.png" id="8_2ri3n"]
+[ext_resource type="Texture2D" uid="uid://cch6l2yis0p76" path="res://assets/decors/Fusée .png" id="9_dtaag"]
+[ext_resource type="PackedScene" uid="uid://cuy0gtevrnml7" path="res://scenes/etabli.tscn" id="9_gp8db"]
 [ext_resource type="Script" path="res://scenes/bubble.gd" id="9_w1ad1"]
 [ext_resource type="Texture2D" uid="uid://bw4srmjtgtqns" path="res://assets/UI/exit_button_idle.png" id="10_r0n0n"]
 [ext_resource type="Texture2D" uid="uid://bttrd1fiy3vr0" path="res://assets/UI/exit_button_clicked.png" id="11_w0lwb"]
 [ext_resource type="Texture2D" uid="uid://bn6v117s6wvx7" path="res://assets/UI/exit_button_hover.png" id="12_acnnw"]
+[ext_resource type="AudioStream" uid="uid://c32d0umacnrg4" path="res://assets/sfx/sci-fi-bubble-pop-89059.mp3" id="13_p01yx"]
 [ext_resource type="PackedScene" uid="uid://dh5c7nftwcerk" path="res://scenes/semi/boite_agraine.tscn" id="13_qnmih"]
+[ext_resource type="PackedScene" uid="uid://cwvicoipnmhxq" path="res://tuto.tscn" id="16_arnvi"]
+[ext_resource type="AudioStream" uid="uid://bjmlkf33vcrk4" path="res://ggj_2025.mp3" id="17_yno5h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vb21f"]
 size = Vector2(3560, 82)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0yr1d"]
+radius = 16.0
+height = 134.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sq348"]
 shader = ExtResource("7_bgukk")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.4
 shader_parameter/maxStrength = 0.5
-shader_parameter/strengthScale = 100.0
+shader_parameter/strengthScale = 150.0
 shader_parameter/interval = 3.5
 shader_parameter/detail = 1.0
 shader_parameter/distortion = 0.0
@@ -109,9 +118,8 @@ offset = Vector2(-50.0001, 0)
 [node name="sol" type="Parallax2D" parent="."]
 
 [node name="SolTile" type="Sprite2D" parent="sol"]
-position = Vector2(-192, 600)
-scale = Vector2(4.4114, 1.44906)
-texture = ExtResource("2_xlrkn")
+position = Vector2(-12, 690)
+texture = ExtResource("3_mywxk")
 centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="sol"]
@@ -137,18 +145,32 @@ object2 = NodePath("../playzone/Pingouin2")
 y_sort_enabled = true
 
 [node name="Pingouin" parent="playzone" instance=ExtResource("2_sdqw1")]
-position = Vector2(1303, 911)
+position = Vector2(1395, 936)
 semi_scene = ExtResource("6_uygr6")
 interact_speed = 100
 
 [node name="Pingouin2" parent="playzone" instance=ExtResource("2_sdqw1")]
-position = Vector2(1614, 926)
+position = Vector2(1170, 938)
 player = 1
 semi_scene = ExtResource("6_uygr6")
 interact_speed = 100
 
 [node name="BoiteAgraine" parent="playzone" instance=ExtResource("13_qnmih")]
-position = Vector2(1449, 849)
+position = Vector2(1510, 848)
+
+[node name="etabli" parent="playzone" instance=ExtResource("9_gp8db")]
+position = Vector2(1705, 869)
+
+[node name="Fusée" type="Sprite2D" parent="playzone"]
+position = Vector2(1998, 817)
+texture = ExtResource("9_dtaag")
+offset = Vector2(106, -166)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="playzone/Fusée"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playzone/Fusée/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0yr1d")
 
 [node name="bubble" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_sq348")
@@ -213,6 +235,9 @@ shape = SubResource("SegmentShape2D_xql0u")
 position = Vector2(-297.5, 124)
 shape = SubResource("SegmentShape2D_jnbf3")
 
+[node name="bloup" type="AudioStreamPlayer" parent="bubble"]
+stream = ExtResource("13_p01yx")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="TextureButton" type="TextureButton" parent="UI"]
@@ -224,6 +249,15 @@ texture_normal = ExtResource("10_r0n0n")
 texture_pressed = ExtResource("11_w0lwb")
 texture_hover = ExtResource("12_acnnw")
 
+[node name="Control" parent="." instance=ExtResource("16_arnvi")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_yno5h")
+
+[connection signal="crafted_to_spawn" from="playzone/Pingouin" to="." method="_on_crafted_instanciated"]
+[connection signal="not_enough_wood" from="playzone/Pingouin" to="playzone/etabli" method="_on_pingouin_not_enough_wood"]
 [connection signal="semi_to_spawn" from="playzone/Pingouin" to="." method="_on_semi_instanciated"]
+[connection signal="crafted_to_spawn" from="playzone/Pingouin2" to="." method="_on_crafted_instanciated"]
+[connection signal="not_enough_wood" from="playzone/Pingouin2" to="playzone/etabli" method="_on_pingouin_not_enough_wood"]
 [connection signal="semi_to_spawn" from="playzone/Pingouin2" to="." method="_on_semi_instanciated"]
 [connection signal="pressed" from="UI/TextureButton" to="." method="_on_texture_button_pressed"]
